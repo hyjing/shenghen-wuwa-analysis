@@ -6,7 +6,9 @@
 
 ## 在线使用
 
-[打开声痕](https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site)
+在线页面具体网址：
+
+https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site
 
 当前站点为项目所有者私有访问；如需提供给其他玩家使用，需要调整站点访问权限或自行部署。
 
