@@ -29,7 +29,8 @@ function normalize(raw: unknown): Pull[] {
   return candidates.map((item,index)=>{
     const x=item as Record<string,unknown>;
     const rarity=Number(x.rarity ?? x.qualityLevel ?? x.quality_level ?? x.rank ?? x.star ?? 3);
-    return {id:String(x.id ?? x.recordId ?? x.record_id ?? `${x.time ?? x.createTime}-${index}`),name:String(x.name ?? x.resourceName ?? x.resource_name ?? x.item_name ?? '未知物品'),rarity,time:String(x.time ?? x.createTime ?? x.create_time ?? ''),pool:String(x.pool ?? x.cardPoolType ?? x.card_pool_type ?? x.banner ?? '限定角色'),isUp:Boolean(x.isUp ?? x.is_up)};
+    const rawUp=x.isUp ?? x.is_up;
+    return {id:String(x.id ?? x.recordId ?? x.record_id ?? `${x.time ?? x.createTime}-${index}`),name:String(x.name ?? x.resourceName ?? x.resource_name ?? x.item_name ?? '未知物品'),rarity,time:String(x.time ?? x.createTime ?? x.create_time ?? ''),pool:String(x.pool ?? x.cardPoolType ?? x.card_pool_type ?? x.banner ?? '限定角色'),...(rawUp===undefined?{}:{isUp:Boolean(rawUp)})};
   }).filter(x=>x.rarity>=3);
 }
 
@@ -47,7 +48,8 @@ export default function Home() {
   const pools=useMemo(()=>Array.from(new Set(pulls.map(x=>x.pool))),[pulls]);
   const current=useMemo(()=>pulls.filter(x=>x.pool===pool),[pulls,pool]);
   const five=current.filter(x=>x.rarity===5);
-  const currentPity=Math.max(0,current.findIndex(x=>x.rarity===5));
+  const firstGold=current.findIndex(x=>x.rarity===5);
+  const currentPity=firstGold<0?current.length:firstGold;
   const intervals=five.map((gold,i)=>{const start=current.indexOf(gold);const end=i===five.length-1?current.length:current.indexOf(five[i+1]);return Math.max(1,end-start);});
   const avg=intervals.length?Math.round(intervals.reduce((a,b)=>a+b,0)/intervals.length):0;
   const up=five.filter(x=>x.isUp).length;
@@ -59,7 +61,7 @@ export default function Home() {
     <section className="stats">
       <article><span>当前垫抽</span><strong>{currentPity}<small> / 80</small></strong><div className="meter"><i style={{width:`${Math.min(100,currentPity/80*100)}%`}}/></div><p>距离硬保底最多还有 {Math.max(0,80-currentPity)} 抽</p></article>
       <article><span>平均出金</span><strong>{avg||'—'}<small> 抽</small></strong><p>{avg?avg<60?'比 60 抽基准更早':'数据会随导入逐渐准确':'暂无五星间隔数据'}</p></article>
-      <article><span>五星总数</span><strong>{five.length}<small> 个</small></strong><p>UP 命中 {up} 次 · {five.length?Math.round(up/five.length*100):0}%</p></article>
+      <article><span>五星总数</span><strong>{five.length}<small> 个</small></strong><p>{five.some(x=>x.isUp!==undefined)?`UP 命中 ${up} 次 · ${Math.round(up/five.filter(x=>x.isUp!==undefined).length*100)}%`:'官方记录不含 UP 标记'}</p></article>
       <article><span>总唤取</span><strong>{current.length}<small> 抽</small></strong><p>四星 {current.filter(x=>x.rarity===4).length} · 三星 {current.filter(x=>x.rarity===3).length}</p></article>
     </section>
     <section className="records" id="five"><div className="sectionTitle"><div><span>05★ ARCHIVE</span><h2>五星唤取记录</h2></div><small>从新到旧</small></div><div className="goldList">{five.length?five.map((x,i)=><article key={x.id}><div className="portrait">{x.name.slice(0,1)}</div><div><b>{x.name}</b><span>{x.isUp?'限定 UP':'五星共鸣者'}</span></div><div className="pullCount"><strong>{intervals[i]}</strong><span>抽出金</span></div><time>{x.time||'时间未知'}</time></article>):<p className="empty">这个卡池还没有五星记录</p>}</div></section>
@@ -73,7 +75,7 @@ export default function Home() {
     <section className="hero" id="import"><div className="eyebrow"><span/> CONVENE ARCHIVE</div><h1>把每一次潮鸣，<br/><em>变成清晰的答案。</em></h1><p className="intro">导入你的唤取记录，查看保底进度、五星分布和真实欧气。<br/>无需登录，所有分析都在你的浏览器中完成。</p>
       <div className="importCard"><div className="cardHead"><div><span className="step">01</span><h2>导入唤取记录</h2></div><button className="sample" onClick={()=>importPulls(sample)}>使用示例数据 →</button></div>
         <button className={`dropzone ${dragging?'dragging':''}`} onClick={()=>inputRef.current?.click()} onDragOver={e=>{e.preventDefault();setDragging(true)}} onDragLeave={()=>setDragging(false)} onDrop={onDrop}><span className="uploadIcon">↥</span><strong>拖入唤取记录 JSON</strong><span>或点击选择文件</span><small>支持数组及常见 records / data.list 格式 · 重复导入自动合并</small></button><input ref={inputRef} hidden type="file" accept="application/json,.json" onChange={onFile}/>
-        <div className="cardFoot"><span>还没有记录文件？</span><a href="https://github.com/cuo-ren/Wuthering-Waves-Convene-Export" target="_blank" rel="noreferrer">使用开源导出工具 <b>↗</b></a></div>{notice&&<p className="error">{notice}</p>}</div>
+        <div className="cardFoot"><span>还没有记录文件？</span><a href="/shenghen-extractor.zip" download>下载声痕提取器 <b>↓</b></a></div>{notice&&<p className="error">{notice}</p>}</div>
     </section>
     <section className="features" id="privacy"><article><span className="featureNo">01</span><div className="featureIcon">⌁</div><h3>精确计算保底</h3><p>分卡池追踪当前垫抽、大保底状态与每次五星所用抽数。</p></article><article><span className="featureNo">02</span><div className="featureIcon">▥</div><h3>看懂你的欧气</h3><p>平均出金、UP 命中率、抽数分布，一眼看清真实运气。</p></article><article><span className="featureNo">03</span><div className="featureIcon">⌾</div><h3>隐私留在本地</h3><p>不需要账号密码，记录不会上传，随时可以导出或清除。</p></article></section>
     <footer><span>SHENGHEN · LOCAL FIRST</span><span>非库洛游戏官方产品</span></footer>
