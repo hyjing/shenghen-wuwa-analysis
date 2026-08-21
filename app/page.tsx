@@ -15,7 +15,16 @@ const sample: Pull[] = [
 
 function normalize(raw: unknown): Pull[] {
   const root = raw as Record<string, unknown>;
-  const candidates = Array.isArray(raw) ? raw : [root?.records,root?.list,root?.data,(root?.data as Record<string,unknown>)?.list,(root?.data as Record<string,unknown>)?.records].find(Array.isArray);
+  const findRecords=(value:unknown,depth=0):unknown[]|undefined=>{
+    if(depth>5||value===null||typeof value!=='object')return;
+    if(Array.isArray(value)){
+      if(value.some(item=>item&&typeof item==='object'&&('rarity' in item||'qualityLevel' in item||'quality_level' in item||'rank' in item)))return value;
+      for(const item of value){const found=findRecords(item,depth+1);if(found)return found;}
+      return;
+    }
+    for(const child of Object.values(value)){const found=findRecords(child,depth+1);if(found)return found;}
+  };
+  const candidates = Array.isArray(raw) ? raw : [root?.records,root?.list,root?.data,(root?.data as Record<string,unknown>)?.list,(root?.data as Record<string,unknown>)?.records].find(Array.isArray) ?? findRecords(raw);
   if (!Array.isArray(candidates)) throw new Error('找不到抽卡记录数组');
   return candidates.map((item,index)=>{
     const x=item as Record<string,unknown>;
@@ -64,7 +73,7 @@ export default function Home() {
     <section className="hero" id="import"><div className="eyebrow"><span/> CONVENE ARCHIVE</div><h1>把每一次潮鸣，<br/><em>变成清晰的答案。</em></h1><p className="intro">导入你的唤取记录，查看保底进度、五星分布和真实欧气。<br/>无需登录，所有分析都在你的浏览器中完成。</p>
       <div className="importCard"><div className="cardHead"><div><span className="step">01</span><h2>导入唤取记录</h2></div><button className="sample" onClick={()=>importPulls(sample)}>使用示例数据 →</button></div>
         <button className={`dropzone ${dragging?'dragging':''}`} onClick={()=>inputRef.current?.click()} onDragOver={e=>{e.preventDefault();setDragging(true)}} onDragLeave={()=>setDragging(false)} onDrop={onDrop}><span className="uploadIcon">↥</span><strong>拖入唤取记录 JSON</strong><span>或点击选择文件</span><small>支持数组及常见 records / data.list 格式 · 重复导入自动合并</small></button><input ref={inputRef} hidden type="file" accept="application/json,.json" onChange={onFile}/>
-        <div className="cardFoot"><span>还没有记录文件？</span><a href="/extract-wuwa-history.ps1" download>下载本地提取工具 <b>↓</b></a></div>{notice&&<p className="error">{notice}</p>}</div>
+        <div className="cardFoot"><span>还没有记录文件？</span><a href="https://github.com/cuo-ren/Wuthering-Waves-Convene-Export" target="_blank" rel="noreferrer">使用开源导出工具 <b>↗</b></a></div>{notice&&<p className="error">{notice}</p>}</div>
     </section>
     <section className="features" id="privacy"><article><span className="featureNo">01</span><div className="featureIcon">⌁</div><h3>精确计算保底</h3><p>分卡池追踪当前垫抽、大保底状态与每次五星所用抽数。</p></article><article><span className="featureNo">02</span><div className="featureIcon">▥</div><h3>看懂你的欧气</h3><p>平均出金、UP 命中率、抽数分布，一眼看清真实运气。</p></article><article><span className="featureNo">03</span><div className="featureIcon">⌾</div><h3>隐私留在本地</h3><p>不需要账号密码，记录不会上传，随时可以导出或清除。</p></article></section>
     <footer><span>SHENGHEN · LOCAL FIRST</span><span>非库洛游戏官方产品</span></footer>
