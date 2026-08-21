@@ -5,6 +5,8 @@
 3. 右键 shenghen-extractor.ps1，选择“使用 PowerShell 运行”。
 4. 将生成的 shenghen-pulls-你的UID.json 拖进声痕网页。
 
+提取器会查询 1-13 号卡池并与同名旧 JSON 自动合并。官方接口不提供更早历史分页，请保留旧 JSON 并定期运行。
+
 如果 Windows 阻止运行：
 打开 PowerShell，输入 Set-ExecutionPolicy -Scope Process Bypass；
 再把 shenghen-extractor.ps1 拖入窗口，按 Enter。
