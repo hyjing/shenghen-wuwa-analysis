@@ -1,5 +1,5 @@
 ﻿<#
-声痕鸣潮唤取记录提取器 v0.1.0
+声痕鸣潮唤取记录提取器 v0.2.0
 只读本地日志，仅请求库洛官方 API，并在本地生成 JSON。
 参考资料：
 - WuWa Local Tracker (MIT): https://github.com/dyar7474/WuWa_local_tracker
@@ -12,7 +12,7 @@ param([string]$GamePath,[string]$OutputPath,[string]$ConveneUrl,[switch]$NoPause
 $ErrorActionPreference='Stop'
 $ProgressPreference='SilentlyContinue'
 Add-Type -AssemblyName System.Web
-$PoolNames=@{1='限定角色';2='限定武器';3='常驻角色';4='常驻武器';5='新手池';6='新手自选';7='回馈池'}
+$PoolNames=@{1='限定角色';2='限定武器';3='常驻角色';4='常驻武器';5='新手池';6='新手自选';7='回馈池';8='新旅程角色';9='新旅程武器';10='联动角色';11='联动武器';12='特殊角色';13='特殊武器'}
 
 function Read-SharedBytes([string]$Path) {
   $s=$null;$m=$null
@@ -121,7 +121,8 @@ try {
 
   Write-Host '\n[3/4] 从库洛官方 API 获取记录' -ForegroundColor Cyan
   $records=New-Object System.Collections.Generic.List[object]
-  foreach($poolType in 1..7){
+  # 新卡池会使用新的类型编号；查询到 13 以兼容当前联动池及后续预留池。
+  foreach($poolType in 1..13){
     $body=@{cardPoolId=$p.recordId;cardPoolType=$poolType;languageCode=$p.language;playerId=$p.playerId;recordId=$p.recordId;serverId=$p.serverId}|ConvertTo-Json -Compress
     try{
       $response=Invoke-RestMethod -Uri "$api/gacha/record/query" -Method Post -ContentType 'application/json' -Body $body -TimeoutSec 30
@@ -130,7 +131,9 @@ try {
         $item=$items[$i];$name=[string]$item.name;if(!$name){$name=[string]$item.resourceName}
         $rarity=[int]$item.qualityLevel;$time=[string]$item.time
         $id=[string]$item.id;if(!$id){$id=[string]$item.recordId};if(!$id){$id=Get-Hash "$($p.playerId)|$poolType|$time|$name|$rarity|$i"}
-        $records.Add([PSCustomObject]@{id=$id;name=$name;rarity=$rarity;time=$time;pool=$PoolNames[$poolType];poolType=$poolType})
+        $poolName=[string]$item.cardPoolType
+        if(!$poolName -or $poolName -match '^\d+$'){$poolName=$PoolNames[$poolType]}
+        $records.Add([PSCustomObject]@{id=$id;name=$name;rarity=$rarity;time=$time;pool=$poolName;poolType=$poolType})
       }
       Write-Host ("  {0}: {1} 条" -f $PoolNames[$poolType],$items.Count) -ForegroundColor Green
     }catch{Write-Warning ("{0}读取失败：{1}" -f $PoolNames[$poolType],$_.Exception.Message)}
