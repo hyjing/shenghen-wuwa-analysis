@@ -2,82 +2,48 @@
 
 import { ChangeEvent, DragEvent, useEffect, useMemo, useRef, useState } from 'react';
 
-type Pull = { id:string; name:string; rarity:number; time:string; pool:string; isUp?:boolean };
-
+type Pull = { id:string; name:string; rarity:number; time:string; pool:string; poolType?:number; kind?:string; isUp?:boolean };
+const ASSET_ROOT='https://raw.githubusercontent.com/ryanbenson/wuthering-waves-assets/master/images';
+const characterAssets:Record<string,string>={'今汐':'Jinhsi','维里奈':'Verina','长离':'Changli','忌炎':'Jiyan','吟霖':'Yinlin','安可':'Encore','卡卡罗':'Calcharo','凌阳':'Lingyang','鉴心':'Jianxin','守岸人':'Shorekeeper','折枝':'Zhezhi','相里要':'XiangliYao','椿':'Camellya','珂莱塔':'Carlotta','洛可可':'Roccia','菲比':'Phoebe','布兰特':'Brant','坎特蕾拉':'Cantarella','赞妮':'Zani','夏空':'Ciaccona','卡提希娅':'Cartethyia','露帕':'Lupa','弗洛洛':'Phrolova','奥古斯塔':'Augusta','尤诺':'Iuno','嘉贝莉娜':'Galbrena','千咲':'Chisa','琳奈':'Lynae','莫宁':'Mornye','陆·赫斯':'LuukHerssen','仇远':'Qiuyuan','丹瑾':'Danjin','散华':'Sanhua','桃祈':'Taoqi','白芷':'Baizhi','秧秧':'Yangyang','秋水':'Aalto','炽霞':'Chixia','莫特斐':'Mortefi','渊武':'Yuanwu','釉瑚':'Youhu','灯灯':'Lumi','漂泊者·衍射':'RoverSpectroFemale','漂泊者·湮灭':'RoverHavocFemale','漂泊者·气动':'RoverAeroFemale'};
+const weaponAssets:Record<string,string>={'苍鳞千嶂':'VerdantSummit','掣傀之手':'Stringmaster','千古洑流':'EmeraldOfGenesis','停驻之烟':'StaticMist','浩境粼光':'LustrousRazor','漪澜浮录':'CosmicRipples','擎渊怒涛':'AbyssSurges','时和岁稔':'AgesOfHarvest','赫奕流明':'BlazingBrilliance','琼枝冰绡':'RimeDrapedSprouts','诸方玄枢':'VeritysHandle','星序协响':'StellarSymphony','裁春':'RedSpring','死与舞':'TheLastDance','悲喜剧':'Tragicomedy','和光回唱':'LuminousHymn','不灭航路':'UnflickeringValor','海的呢喃':'WhispersofSirens','林间的咏叹调':'WoodlandAria','焰光裁定':'BlazingJustice','心之锚':'SomnoireAnchor','血誓盟约':'BloodpactsPledge','永夜长明':'DauntlessEvernight','无眠烈火':'UndyingFlame','今州守望':'JinzhouKeeper','奇幻变奏':'Variation','行进序曲':'Overture','华彩乐段':'Cadenza'};
 const sample: Pull[] = [
-  {id:'1',name:'今汐',rarity:5,time:'2026-08-16 21:42:12',pool:'限定角色',isUp:true},
-  ...Array.from({length:63},(_,i)=>({id:`a${i}`,name:i%8===0?'丹瑾':'锻造武器',rarity:i%8===0?4:3,time:`2026-08-${String(15-Math.floor(i/10)).padStart(2,'0')} 18:22:10`,pool:'限定角色'})),
-  {id:'2',name:'维里奈',rarity:5,time:'2026-07-28 10:21:01',pool:'限定角色',isUp:false},
-  ...Array.from({length:70},(_,i)=>({id:`b${i}`,name:i%9===0?'秧秧':'训练武器',rarity:i%9===0?4:3,time:'2026-07-20 12:00:00',pool:'限定角色'})),
-  {id:'3',name:'长离',rarity:5,time:'2026-07-12 13:04:51',pool:'限定角色',isUp:true},
-  ...Array.from({length:24},(_,i)=>({id:`c${i}`,name:'训练武器',rarity:3,time:'2026-07-01 12:00:00',pool:'限定角色'})),
+  {id:'1',name:'今汐',rarity:5,time:'2026-08-16 21:42:12',pool:'限定角色',poolType:1,kind:'角色',isUp:true},
+  ...Array.from({length:63},(_,i)=>({id:`a${i}`,name:i%8===0?'丹瑾':'锻造武器',rarity:i%8===0?4:3,time:`2026-08-${String(15-Math.floor(i/10)).padStart(2,'0')} 18:22:10`,pool:'限定角色',poolType:1})),
+  {id:'2',name:'维里奈',rarity:5,time:'2026-07-28 10:21:01',pool:'限定角色',poolType:1,kind:'角色',isUp:false},
+  ...Array.from({length:70},(_,i)=>({id:`b${i}`,name:i%9===0?'秧秧':'训练武器',rarity:i%9===0?4:3,time:'2026-07-20 12:00:00',pool:'限定角色',poolType:1})),
+  {id:'3',name:'长离',rarity:5,time:'2026-07-12 13:04:51',pool:'限定角色',poolType:1,kind:'角色',isUp:true},
+  ...Array.from({length:24},(_,i)=>({id:`c${i}`,name:'训练武器',rarity:3,time:'2026-07-01 12:00:00',pool:'限定角色',poolType:1})),
 ];
 
 function normalize(raw: unknown): Pull[] {
   const root = raw as Record<string, unknown>;
-  const findRecords=(value:unknown,depth=0):unknown[]|undefined=>{
-    if(depth>5||value===null||typeof value!=='object')return;
-    if(Array.isArray(value)){
-      if(value.some(item=>item&&typeof item==='object'&&('rarity' in item||'qualityLevel' in item||'quality_level' in item||'rank' in item)))return value;
-      for(const item of value){const found=findRecords(item,depth+1);if(found)return found;}
-      return;
-    }
-    for(const child of Object.values(value)){const found=findRecords(child,depth+1);if(found)return found;}
-  };
+  const findRecords=(value:unknown,depth=0):unknown[]|undefined=>{if(depth>5||value===null||typeof value!=='object')return;if(Array.isArray(value)){if(value.some(item=>item&&typeof item==='object'&&('rarity' in item||'qualityLevel' in item||'quality_level' in item||'rank' in item)))return value;for(const item of value){const found=findRecords(item,depth+1);if(found)return found;}return;}for(const child of Object.values(value)){const found=findRecords(child,depth+1);if(found)return found;}};
   const candidates = Array.isArray(raw) ? raw : [root?.records,root?.list,root?.data,(root?.data as Record<string,unknown>)?.list,(root?.data as Record<string,unknown>)?.records].find(Array.isArray) ?? findRecords(raw);
   if (!Array.isArray(candidates)) throw new Error('找不到抽卡记录数组');
-  return candidates.map((item,index)=>{
-    const x=item as Record<string,unknown>;
-    const rarity=Number(x.rarity ?? x.qualityLevel ?? x.quality_level ?? x.rank ?? x.star ?? 3);
-    const rawUp=x.isUp ?? x.is_up;
-    return {id:String(x.id ?? x.recordId ?? x.record_id ?? `${x.time ?? x.createTime}-${index}`),name:String(x.name ?? x.resourceName ?? x.resource_name ?? x.item_name ?? '未知物品'),rarity,time:String(x.time ?? x.createTime ?? x.create_time ?? ''),pool:String(x.pool ?? x.cardPoolType ?? x.card_pool_type ?? x.banner ?? '限定角色'),...(rawUp===undefined?{}:{isUp:Boolean(rawUp)})};
-  }).filter(x=>x.rarity>=3);
+  return candidates.map((item,index)=>{const x=item as Record<string,unknown>;const rarity=Number(x.rarity ?? x.qualityLevel ?? x.quality_level ?? x.rank ?? x.star ?? 3);const rawUp=x.isUp ?? x.is_up;const pool=String(x.pool ?? x.cardPoolType ?? x.card_pool_type ?? x.banner ?? '限定角色');return {id:String(x.id ?? x.recordId ?? x.record_id ?? `${x.time ?? x.createTime}-${index}`),name:String(x.name ?? x.resourceName ?? x.resource_name ?? x.item_name ?? '未知物品'),rarity,time:String(x.time ?? x.createTime ?? x.create_time ?? ''),pool,poolType:Number(x.poolType ?? x.pool_type)||undefined,kind:String(x.kind ?? x.resourceType ?? x.resource_type ?? (pool.includes('武器')?'武器':'角色')),...(rawUp===undefined?{}:{isUp:Boolean(rawUp)})};}).filter(x=>x.rarity>=3);
 }
+function assetFor(pull:Pull){const weapon=pull.kind==='武器'||pull.pool.includes('武器');const slug=(weapon?weaponAssets:characterAssets)[pull.name];return slug?`${ASSET_ROOT}${weapon?'/weapons':''}/${slug}.png`:'';}
+function Avatar({pull,large=false}:{pull:Pull;large?:boolean}){const [failed,setFailed]=useState(false);const src=assetFor(pull);return <div className={`itemAvatar ${large?'large':''} ${pull.kind==='武器'||pull.pool.includes('武器')?'weapon':''}`}>{src&&!failed?<img src={src} alt={pull.name} onError={()=>setFailed(true)}/>:<span>{pull.name.slice(0,1)}</span>}</div>;}
+function rating(avg:number){if(!avg)return {mark:'待分析',note:'继续积累唤取记录'};if(avg<=45)return {mark:'潮鸣眷顾',note:'五星来得比大多数时候更早'};if(avg<=60)return {mark:'稳中带欧',note:'整体出金节奏相当不错'};if(avg<=70)return {mark:'顺其自然',note:'保底曲线处于正常区间'};return {mark:'逆潮而行',note:'下一金或许就在眼前'};}
 
 export default function Home() {
-  const inputRef=useRef<HTMLInputElement>(null);
-  const [pulls,setPulls]=useState<Pull[]>([]);
-  const [dragging,setDragging]=useState(false);
-  const [notice,setNotice]=useState('');
-  const [pool,setPool]=useState('限定角色');
-  useEffect(()=>{try{const saved=localStorage.getItem('shenghen-pulls');if(saved)setPulls(JSON.parse(saved));}catch{}},[]);
-  const importPulls=(incoming:Pull[])=>{const map=new Map(pulls.map(x=>[x.id,x]));incoming.forEach(x=>map.set(x.id,x));const next=[...map.values()].sort((a,b)=>b.time.localeCompare(a.time));setPulls(next);localStorage.setItem('shenghen-pulls',JSON.stringify(next));setNotice(`已导入 ${incoming.length} 条，当前共 ${next.length} 条记录`);};
-  const readFile=async(file?:File)=>{if(!file)return;try{importPulls(normalize(JSON.parse(await file.text())));}catch(e){setNotice(e instanceof Error?e.message:'文件解析失败');}};
-  const onFile=(e:ChangeEvent<HTMLInputElement>)=>readFile(e.target.files?.[0]);
-  const onDrop=(e:DragEvent<HTMLButtonElement>)=>{e.preventDefault();setDragging(false);readFile(e.dataTransfer.files?.[0]);};
-  const pools=useMemo(()=>Array.from(new Set(pulls.map(x=>x.pool))),[pulls]);
-  const current=useMemo(()=>pulls.filter(x=>x.pool===pool),[pulls,pool]);
-  const five=current.filter(x=>x.rarity===5);
-  const firstGold=current.findIndex(x=>x.rarity===5);
-  const currentPity=firstGold<0?current.length:firstGold;
+  const inputRef=useRef<HTMLInputElement>(null);const [pulls,setPulls]=useState<Pull[]>([]);const [playerId,setPlayerId]=useState('');const [dragging,setDragging]=useState(false);const [notice,setNotice]=useState('');const [pool,setPool]=useState('');
+  useEffect(()=>{try{const saved=localStorage.getItem('shenghen-pulls');if(saved)setPulls(JSON.parse(saved));setPlayerId(localStorage.getItem('shenghen-player')||'');}catch{}},[]);
+  const importPulls=(incoming:Pull[],uid='')=>{const map=new Map(pulls.map(x=>[x.id,x]));incoming.forEach(x=>map.set(x.id,x));const next=[...map.values()].sort((a,b)=>b.time.localeCompare(a.time));setPulls(next);localStorage.setItem('shenghen-pulls',JSON.stringify(next));if(uid){setPlayerId(uid);localStorage.setItem('shenghen-player',uid)}setNotice(`已导入 ${incoming.length} 条，当前共 ${next.length} 条记录`);requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'smooth'}));};
+  const readFile=async(file?:File)=>{if(!file)return;try{const raw=JSON.parse(await file.text()) as Record<string,unknown>;const player=raw?.player as Record<string,unknown>|undefined;importPulls(normalize(raw),String(player?.id??raw?.playerId??raw?.uid??''));}catch(e){setNotice(e instanceof Error?e.message:'文件解析失败');}};
+  const onFile=(e:ChangeEvent<HTMLInputElement>)=>readFile(e.target.files?.[0]);const onDrop=(e:DragEvent<HTMLButtonElement>)=>{e.preventDefault();setDragging(false);readFile(e.dataTransfer.files?.[0]);};
+  const pools=useMemo(()=>Array.from(new Set(pulls.map(x=>x.pool))),[pulls]);useEffect(()=>{if(pools.length&&!pools.includes(pool))setPool(pools[0]);},[pools,pool]);
+  const current=useMemo(()=>pulls.filter(x=>x.pool===pool),[pulls,pool]);const allFive=pulls.filter(x=>x.rarity===5);const five=current.filter(x=>x.rarity===5);const firstGold=current.findIndex(x=>x.rarity===5);const currentPity=firstGold<0?current.length:firstGold;
   const intervals=five.map((gold,i)=>{const start=current.indexOf(gold);const end=i===five.length-1?current.length:current.indexOf(five[i+1]);return Math.max(1,end-start);});
-  const avg=intervals.length?Math.round(intervals.reduce((a,b)=>a+b,0)/intervals.length):0;
-  const up=five.filter(x=>x.isUp).length;
+  const allIntervals=useMemo(()=>pools.flatMap(p=>{const list=pulls.filter(x=>x.pool===p);const gold=list.filter(x=>x.rarity===5);return gold.map((g,i)=>{const start=list.indexOf(g);const end=i===gold.length-1?list.length:list.indexOf(gold[i+1]);return Math.max(1,end-start)})}),[pulls,pools]);
+  const avg=allIntervals.length?Math.round(allIntervals.reduce((a,b)=>a+b,0)/allIntervals.length*10)/10:0;const verdict=rating(avg);const featured=allFive.filter(x=>x.pool.includes('限定')||x.pool.includes('联动'));const standard=allFive.filter(x=>!featured.includes(x));
 
-  if(pulls.length) return <main className="dash">
-    <header className="topbar"><button className="brand buttonBrand" onClick={()=>setPulls([])}><span className="brandMark">◈</span><span>声痕</span><span className="brandSub">鸣潮唤取分析</span></button><nav><a className="active" href="#overview">总览</a><a href="#five">五星记录</a><a href="#distribution">分布</a></nav><div className="headerActions"><span className="localPill"><i/> 本地模式</span><button onClick={()=>inputRef.current?.click()}>＋ 更新记录</button></div><input ref={inputRef} hidden type="file" accept=".json" onChange={onFile}/></header>
-    <section className="dashHero" id="overview"><div><span className="eyebrow"><span/> CONVENE OVERVIEW</span><h1>你的唤取档案</h1><p>{pulls.length} 条记录 · 数据保存在此设备</p></div><div className="luckSeal"><b>{avg&&avg<60?'欧':'稳'}</b><span>综合手气</span></div></section>
-    <div className="poolTabs">{pools.map(x=><button className={x===pool?'selected':''} key={x} onClick={()=>setPool(x)}>{x}</button>)}</div>
-    <section className="stats">
-      <article><span>当前垫抽</span><strong>{currentPity}<small> / 80</small></strong><div className="meter"><i style={{width:`${Math.min(100,currentPity/80*100)}%`}}/></div><p>距离硬保底最多还有 {Math.max(0,80-currentPity)} 抽</p></article>
-      <article><span>平均出金</span><strong>{avg||'—'}<small> 抽</small></strong><p>{avg?avg<60?'比 60 抽基准更早':'数据会随导入逐渐准确':'暂无五星间隔数据'}</p></article>
-      <article><span>五星总数</span><strong>{five.length}<small> 个</small></strong><p>{five.some(x=>x.isUp!==undefined)?`UP 命中 ${up} 次 · ${Math.round(up/five.filter(x=>x.isUp!==undefined).length*100)}%`:'官方记录不含 UP 标记'}</p></article>
-      <article><span>总唤取</span><strong>{current.length}<small> 抽</small></strong><p>四星 {current.filter(x=>x.rarity===4).length} · 三星 {current.filter(x=>x.rarity===3).length}</p></article>
-    </section>
-    <section className="records" id="five"><div className="sectionTitle"><div><span>05★ ARCHIVE</span><h2>五星唤取记录</h2></div><small>从新到旧</small></div><div className="goldList">{five.length?five.map((x,i)=><article key={x.id}><div className="portrait">{x.name.slice(0,1)}</div><div><b>{x.name}</b><span>{x.isUp?'限定 UP':'五星共鸣者'}</span></div><div className="pullCount"><strong>{intervals[i]}</strong><span>抽出金</span></div><time>{x.time||'时间未知'}</time></article>):<p className="empty">这个卡池还没有五星记录</p>}</div></section>
-    <section className="distribution" id="distribution"><div className="sectionTitle"><div><span>PITY DISTRIBUTION</span><h2>出金抽数分布</h2></div></div><div className="bars">{['1–20','21–40','41–60','61–70','71–80'].map((label,i)=>{const counts=[intervals.filter(n=>n<=20).length,intervals.filter(n=>n>20&&n<=40).length,intervals.filter(n=>n>40&&n<=60).length,intervals.filter(n=>n>60&&n<=70).length,intervals.filter(n=>n>70).length];const max=Math.max(1,...counts);return <div key={label}><i style={{height:`${20+counts[i]/max*100}px`}}><b>{counts[i]}</b></i><span>{label}</span></div>})}</div></section>
-    {notice&&<div className="toast">{notice}<button onClick={()=>setNotice('')}>×</button></div>}
-    <footer><span>SHENGHEN · LOCAL FIRST</span><button onClick={()=>{localStorage.removeItem('shenghen-pulls');setPulls([])}}>清除本地数据</button></footer>
-  </main>;
+  if(pulls.length) return <main className="dash workshopDash"><header className="topbar"><button className="brand buttonBrand" onClick={()=>setPulls([])}><span className="brandMark">◈</span><span>声痕</span><span className="brandSub">鸣潮唤取分析</span></button><nav><a className="active" href="#overview">总览</a><a href="#five">五星记录</a><a href="#distribution">分布</a></nav><div className="headerActions"><span className="localPill"><i/> 本地模式</span><button onClick={()=>inputRef.current?.click()}>＋ 更新记录</button></div><input ref={inputRef} hidden type="file" accept=".json" onChange={onFile}/></header>
+    <section className="analysisCard" id="overview"><div className="analysisCopy"><span className="eyebrow"><span/> CONVENE REPORT</span><p className="uid">漂泊者 {playerId||'本地档案'}</p><h1>{verdict.mark}</h1><p className="verdictNote">{verdict.note}</p><div className="summaryNums"><div><strong>{pulls.length}</strong><span>总唤取</span></div><div><strong>{avg||'—'}</strong><span>平均出金</span></div><div><strong>{allFive.length}</strong><span>五星数</span></div><div><strong>{currentPity}</strong><span>当前垫抽</span></div></div></div>{allFive[0]&&<div className="heroDrop"><Avatar pull={allFive[0]} large/><b>{allFive[0].name}</b><span>最近获得五星</span></div>}</section>
+    <section className="collectionCard"><div className="collectionHead"><div><span>五星收藏</span><h2>共获得限定五星 <b>{featured.length}</b> 个，常驻五星 <b>{standard.length}</b> 个</h2></div><small>重复获得会重复展示</small></div><div className="iconShelf">{allFive.length?allFive.slice(0,18).map(x=><div key={x.id} title={`${x.name} · ${x.time}`}><Avatar pull={x}/><span>{x.name}</span></div>):<p>暂无五星记录</p>}</div></section>
+    <section className="poolPanel" id="five"><div className="poolTabs">{pools.map(x=><button className={x===pool?'selected':''} key={x} onClick={()=>setPool(x)}>{x}</button>)}</div><div className="poolSummary"><div><span>当前垫抽</span><strong>{currentPity}<small>/80</small></strong></div><div className="pityTrack"><i style={{width:`${Math.min(100,currentPity/80*100)}%`}}/></div><p>{current.length} 抽 · {five.length} 个五星 · 距离硬保底最多 {Math.max(0,80-currentPity)} 抽</p></div><div className="pityRows">{five.length?five.map((x,i)=>{const n=intervals[i];return <article key={x.id}><Avatar pull={x}/><div className="pityMeta"><b>{x.name}</b><span>{x.time||'时间未知'}</span></div><div className="pityBar"><i className={n<=30?'lucky':n<=60?'good':n<=70?'normal':'late'} style={{width:`${Math.max(16,n/80*100)}%`}}><strong>{n} 抽</strong></i></div>{x.isUp===false&&<em>歪</em>}</article>}):<p className="empty">这个卡池还没有五星记录</p>}</div></section>
+    <section className="distribution" id="distribution"><div className="sectionTitle"><div><span>PITY DISTRIBUTION</span><h2>出金抽数分布</h2></div></div><div className="bars">{['1–20','21–40','41–60','61–70','71–80'].map((label,i)=>{const counts=[allIntervals.filter(n=>n<=20).length,allIntervals.filter(n=>n>20&&n<=40).length,allIntervals.filter(n=>n>40&&n<=60).length,allIntervals.filter(n=>n>60&&n<=70).length,allIntervals.filter(n=>n>70).length];const max=Math.max(1,...counts);return <div key={label}><i style={{height:`${20+counts[i]/max*100}px`}}><b>{counts[i]}</b></i><span>{label}</span></div>})}</div></section>
+    {notice&&<div className="toast">{notice}<button onClick={()=>setNotice('')}>×</button></div>}<footer><span>SHENGHEN · LOCAL FIRST</span><button onClick={()=>{localStorage.removeItem('shenghen-pulls');localStorage.removeItem('shenghen-player');setPulls([])}}>清除本地数据</button></footer></main>;
 
-  return <main className="shell">
-    <header className="topbar"><a className="brand" href="#"><span className="brandMark">◈</span><span>声痕</span><span className="brandSub">鸣潮唤取分析</span></a><nav><a className="active" href="#import">导入</a><a href="#privacy">隐私说明</a><a href="#help">使用帮助</a></nav><span className="localPill"><i/> 数据仅存本机</span></header>
-    <section className="hero" id="import"><div className="eyebrow"><span/> CONVENE ARCHIVE</div><h1>把每一次潮鸣，<br/><em>变成清晰的答案。</em></h1><p className="intro">导入你的唤取记录，查看保底进度、五星分布和真实欧气。<br/>无需登录，所有分析都在你的浏览器中完成。</p>
-      <div className="importCard"><div className="cardHead"><div><span className="step">01</span><h2>导入唤取记录</h2></div><button className="sample" onClick={()=>importPulls(sample)}>使用示例数据 →</button></div>
-        <button className={`dropzone ${dragging?'dragging':''}`} onClick={()=>inputRef.current?.click()} onDragOver={e=>{e.preventDefault();setDragging(true)}} onDragLeave={()=>setDragging(false)} onDrop={onDrop}><span className="uploadIcon">↥</span><strong>拖入唤取记录 JSON</strong><span>或点击选择文件</span><small>支持数组及常见 records / data.list 格式 · 重复导入自动合并</small></button><input ref={inputRef} hidden type="file" accept="application/json,.json" onChange={onFile}/>
-        <div className="cardFoot"><span>还没有记录文件？</span><a href="/shenghen-extractor.zip" download>下载声痕提取器 <b>↓</b></a></div>{notice&&<p className="error">{notice}</p>}</div>
-    </section>
-    <section className="features" id="privacy"><article><span className="featureNo">01</span><div className="featureIcon">⌁</div><h3>精确计算保底</h3><p>分卡池追踪当前垫抽、大保底状态与每次五星所用抽数。</p></article><article><span className="featureNo">02</span><div className="featureIcon">▥</div><h3>看懂你的欧气</h3><p>平均出金、UP 命中率、抽数分布，一眼看清真实运气。</p></article><article><span className="featureNo">03</span><div className="featureIcon">⌾</div><h3>隐私留在本地</h3><p>不需要账号密码，记录不会上传，随时可以导出或清除。</p></article></section>
-    <footer><span>SHENGHEN · LOCAL FIRST</span><span>非库洛游戏官方产品</span></footer>
-  </main>;
+  return <main className="shell"><header className="topbar"><a className="brand" href="#"><span className="brandMark">◈</span><span>声痕</span><span className="brandSub">鸣潮唤取分析</span></a><nav><a className="active" href="#import">导入</a><a href="#privacy">隐私说明</a><a href="#help">使用帮助</a></nav><span className="localPill"><i/> 数据仅存本机</span></header><section className="hero" id="import"><div className="eyebrow"><span/> CONVENE ARCHIVE</div><h1>把每一次潮鸣，<br/><em>变成清晰的答案。</em></h1><p className="intro">导入你的唤取记录，查看保底进度、五星图鉴和真实欧气。<br/>无需登录，所有分析都在你的浏览器中完成。</p><div className="importCard"><div className="cardHead"><div><span className="step">01</span><h2>导入唤取记录</h2></div><button className="sample" onClick={()=>importPulls(sample,'700055710')}>查看新版示例 →</button></div><button className={`dropzone ${dragging?'dragging':''}`} onClick={()=>inputRef.current?.click()} onDragOver={e=>{e.preventDefault();setDragging(true)}} onDragLeave={()=>setDragging(false)} onDrop={onDrop}><span className="uploadIcon">↥</span><strong>拖入唤取记录 JSON</strong><span>或点击选择文件</span><small>支持数组及常见 records / data.list 格式 · 重复导入自动合并</small></button><input ref={inputRef} hidden type="file" accept="application/json,.json" onChange={onFile}/><div className="cardFoot"><span>还没有记录文件？</span><a href="/shenghen-extractor.zip" download>下载声痕提取器 <b>↓</b></a></div>{notice&&<p className="error">{notice}</p>}</div></section><section className="features" id="privacy"><article><span className="featureNo">01</span><div className="featureIcon">⌁</div><h3>精确计算保底</h3><p>分卡池追踪当前垫抽与每次五星所用抽数。</p></article><article><span className="featureNo">02</span><div className="featureIcon">▥</div><h3>角色武器图鉴</h3><p>用真实角色与武器图标回顾你的每一次五星。</p></article><article><span className="featureNo">03</span><div className="featureIcon">⌾</div><h3>隐私留在本地</h3><p>不需要账号密码，抽卡记录不会上传。</p></article></section><footer><span>SHENGHEN · LOCAL FIRST</span><span>非库洛游戏官方产品</span></footer></main>;
 }

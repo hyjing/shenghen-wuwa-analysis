@@ -133,7 +133,7 @@ try {
         $id=[string]$item.id;if(!$id){$id=[string]$item.recordId};if(!$id){$id=Get-Hash "$($p.playerId)|$poolType|$time|$name|$rarity|$i"}
         $poolName=[string]$item.cardPoolType
         if(!$poolName -or $poolName -match '^\d+$'){$poolName=$PoolNames[$poolType]}
-        $records.Add([PSCustomObject]@{id=$id;name=$name;rarity=$rarity;time=$time;pool=$poolName;poolType=$poolType})
+        $records.Add([PSCustomObject]@{id=$id;name=$name;rarity=$rarity;time=$time;pool=$poolName;poolType=$poolType;resourceId=$item.resourceId;kind=$item.resourceType})
       }
       Write-Host ("  {0}: {1} 条" -f $PoolNames[$poolType],$items.Count) -ForegroundColor Green
     }catch{Write-Warning ("{0}读取失败：{1}" -f $PoolNames[$poolType],$_.Exception.Message)}
