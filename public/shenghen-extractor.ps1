@@ -1,5 +1,5 @@
 ﻿<#
-声痕鸣潮唤取记录提取器 v0.2.0
+声痕鸣潮唤取记录提取器 v0.3.0
 只读本地日志，仅请求库洛官方 API，并在本地生成 JSON。
 参考资料：
 - WuWa Local Tracker (MIT): https://github.com/dyar7474/WuWa_local_tracker
@@ -89,6 +89,10 @@ function Get-Hash([string]$Value) {
   finally{$sha.Dispose()}
 }
 
+function Get-RecordKey($Record) {
+  return "$([string]$Record.poolType)|$([string]$Record.time)|$([string]$Record.name)|$([string]$Record.rarity)"
+}
+
 try {
   Write-Host '========================================' -ForegroundColor Cyan
   Write-Host ' 声痕 · 鸣潮唤取记录提取器' -ForegroundColor Cyan
@@ -114,8 +118,8 @@ try {
     if(!$ConveneUrl){throw '日志中没有唤取链接。请在游戏中打开“唤取记录”，关闭后重试。'}
   }
 
-  $p=@{serverId=Get-Param $ConveneUrl 'svr_id';playerId=Get-Param $ConveneUrl 'player_id';language=Get-Param $ConveneUrl 'lang';recordId=Get-Param $ConveneUrl 'record_id'}
-  foreach($required in @('serverId','playerId','recordId')){if(!$p[$required]){throw "唤取链接缺少参数：$required"}}
+  $p=@{serverId=Get-Param $ConveneUrl 'svr_id';playerId=Get-Param $ConveneUrl 'player_id';language=Get-Param $ConveneUrl 'lang';recordId=Get-Param $ConveneUrl 'record_id';resourcesId=Get-Param $ConveneUrl 'resources_id'}
+  foreach($required in @('serverId','playerId','recordId','resourcesId')){if(!$p[$required]){throw "唤取链接缺少参数：$required"}}
   if(!$p.language){$p.language='zh-Hans'}
   $api=if($ConveneUrl -match 'aki-game\.com'){'https://gmserver-api.aki-game2.com'}else{'https://gmserver-api.aki-game2.net'}
 
@@ -123,14 +127,16 @@ try {
   $records=New-Object System.Collections.Generic.List[object]
   # 新卡池会使用新的类型编号；查询到 13 以兼容当前联动池及后续预留池。
   foreach($poolType in 1..13){
-    $body=@{cardPoolId=$p.recordId;cardPoolType=$poolType;languageCode=$p.language;playerId=$p.playerId;recordId=$p.recordId;serverId=$p.serverId}|ConvertTo-Json -Compress
+    $body=@{cardPoolId=$p.resourcesId;cardPoolType=$poolType;languageCode=$p.language;playerId=$p.playerId;recordId=$p.recordId;serverId=$p.serverId}|ConvertTo-Json -Compress
     try{
       $response=Invoke-RestMethod -Uri "$api/gacha/record/query" -Method Post -ContentType 'application/json' -Body $body -TimeoutSec 30
       $items=@($response.data)
+      $occurrences=@{}
       for($i=0;$i-lt$items.Count;$i++){
         $item=$items[$i];$name=[string]$item.name;if(!$name){$name=[string]$item.resourceName}
         $rarity=[int]$item.qualityLevel;$time=[string]$item.time
-        $id=[string]$item.id;if(!$id){$id=[string]$item.recordId};if(!$id){$id=Get-Hash "$($p.playerId)|$poolType|$time|$name|$rarity|$i"}
+        $tuple="$poolType|$time|$name|$rarity";$occurrence=1+([int]$occurrences[$tuple]);$occurrences[$tuple]=$occurrence
+        $id=[string]$item.id;if(!$id){$id=[string]$item.recordId};if(!$id){$id=Get-Hash "$($p.playerId)|$tuple|$occurrence"}
         $poolName=[string]$item.cardPoolType
         if(!$poolName -or $poolName -match '^\d+$'){$poolName=$PoolNames[$poolType]}
         $records.Add([PSCustomObject]@{id=$id;name=$name;rarity=$rarity;time=$time;pool=$poolName;poolType=$poolType;resourceId=$item.resourceId;kind=$item.resourceType})
@@ -142,12 +148,15 @@ try {
 
   Write-Host '\n[4/4] 合并旧记录并生成 JSON' -ForegroundColor Cyan
   if(!$OutputPath){$base=if($PSScriptRoot){$PSScriptRoot}else{(Get-Location).Path};$OutputPath=Join-Path $base "shenghen-pulls-$($p.playerId).json"}
-  $byId=@{}
+  $oldRecords=@()
   if(Test-Path $OutputPath){
-    try{$old=[IO.File]::ReadAllText($OutputPath,[Text.Encoding]::UTF8)|ConvertFrom-Json;foreach($r in @($old.records)){if($r.id){$byId[[string]$r.id]=$r}}}catch{Write-Warning '旧文件无法读取，将创建新文件。'}
+    try{$old=[IO.File]::ReadAllText($OutputPath,[Text.Encoding]::UTF8)|ConvertFrom-Json;$oldRecords=@($old.records)}catch{Write-Warning '旧文件无法读取，将创建新文件。'}
   }
-  foreach($r in $records){$byId[[string]$r.id]=$r}
-  $merged=@($byId.Values|Sort-Object{[string]$_.time}-Descending)
+  # 按内容做多重集合合并，既保留同一十连中的重复物品，也兼容旧版生成过的不同 ID。
+  $oldCounts=@{};foreach($r in $oldRecords){$k=Get-RecordKey $r;$oldCounts[$k]=1+([int]$oldCounts[$k])}
+  $newCounts=@{};$mergedList=New-Object System.Collections.Generic.List[object];foreach($r in $oldRecords){$mergedList.Add($r)}
+  foreach($r in $records){$k=Get-RecordKey $r;$newCounts[$k]=1+([int]$newCounts[$k]);if(([int]$newCounts[$k])-gt([int]$oldCounts[$k])){$mergedList.Add($r)}}
+  $merged=@($mergedList|Sort-Object{[string]$_.time}-Descending)
   $out=[ordered]@{format='shenghen-pulls';version=1;exportedAt=[DateTime]::UtcNow.ToString('o');player=[ordered]@{id=$p.playerId;serverId=$p.serverId};records=$merged}
   [IO.File]::WriteAllText($OutputPath,($out|ConvertTo-Json -Depth 8),(New-Object Text.UTF8Encoding($false)))
   Write-Host "\n完成：$($merged.Count) 条记录" -ForegroundColor Green
