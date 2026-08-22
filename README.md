@@ -26,6 +26,7 @@ https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site
 - 导入声痕提取器生成的 JSON
 - 兼容常见数组、<code>records</code> 和嵌套记录格式
 - 按卡池展示当前垫抽、五星总数、平均出金和抽数分布
+- 为常见共鸣者与五星武器展示图标，并用彩色进度条回顾每次出金抽数
 - 重复导入自动合并
 - 使用浏览器本地存储保存分析数据
 - 提供 Windows PowerShell 本地提取器
@@ -131,6 +132,7 @@ public/
 - 官方唤取记录只保留有限时间，建议定期运行提取器备份。
 - 官方接口一次返回当前仍可查询的记录，不提供向更早历史翻页的参数；重复运行时，提取器会把新结果与同名旧 JSON 合并，因此不要删除旧文件。
 - 官方记录不提供明确的“是否命中当期 UP”字段，因此网页不会凭名称猜测。
+- 角色与武器图标通过公开的 [Wuthering Waves Assets](https://github.com/ryanbenson/wuthering-waves-assets) 资源路径加载；图片版权归其原权利方所有。
 - 真实接口流程需要在安装了《鸣潮》的 Windows 电脑上验证。
 
 ## 参考项目
