@@ -1,0 +1,922 @@
+{
+  "1102": {
+    "name": "散华",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_7.webp",
+    "type": "角色"
+  },
+  "1103": {
+    "name": "白芷",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_6.webp",
+    "type": "角色"
+  },
+  "1104": {
+    "name": "凌阳",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_14.webp",
+    "type": "角色"
+  },
+  "1105": {
+    "name": "折枝",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_27_UI.webp",
+    "type": "角色"
+  },
+  "1106": {
+    "name": "釉瑚",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_31_UI.webp",
+    "type": "角色"
+  },
+  "1107": {
+    "name": "珂莱塔",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_32_UI.webp",
+    "type": "角色"
+  },
+  "1108": {
+    "name": "绯雪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_67_UI.webp",
+    "type": "角色"
+  },
+  "1109": {
+    "name": "洛瑟菈",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_66_UI.webp",
+    "type": "角色"
+  },
+  "1110": {
+    "name": "穗穗",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_71_UI.webp",
+    "type": "角色"
+  },
+  "1202": {
+    "name": "炽霞",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_2.webp",
+    "type": "角色"
+  },
+  "1203": {
+    "name": "安可",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_8.webp",
+    "type": "角色"
+  },
+  "1204": {
+    "name": "莫特斐",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_13.webp",
+    "type": "角色"
+  },
+  "1205": {
+    "name": "长离",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_26_UI.webp",
+    "type": "角色"
+  },
+  "1206": {
+    "name": "布兰特",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_44_UI.webp",
+    "type": "角色"
+  },
+  "1207": {
+    "name": "露帕",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_46_UI.webp",
+    "type": "角色"
+  },
+  "1208": {
+    "name": "嘉贝莉娜",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_55_UI.webp",
+    "type": "角色"
+  },
+  "1209": {
+    "name": "莫宁",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_61_UI.webp",
+    "type": "角色"
+  },
+  "1210": {
+    "name": "爱弥斯",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_53_UI.webp",
+    "type": "角色"
+  },
+  "1211": {
+    "name": "达妮娅",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_64_UI.webp",
+    "type": "角色"
+  },
+  "1212": {
+    "name": "景燃",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_74_UI.webp",
+    "type": "角色"
+  },
+  "1301": {
+    "name": "卡卡罗",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_18.webp",
+    "type": "角色"
+  },
+  "1302": {
+    "name": "吟霖",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_17.webp",
+    "type": "角色"
+  },
+  "1303": {
+    "name": "渊武",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_15.webp",
+    "type": "角色"
+  },
+  "1304": {
+    "name": "今汐",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_24_UI.webp",
+    "type": "角色"
+  },
+  "1305": {
+    "name": "相里要",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_25_UI.webp",
+    "type": "角色"
+  },
+  "1306": {
+    "name": "奥古斯塔",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_51_UI.webp",
+    "type": "角色"
+  },
+  "1307": {
+    "name": "卜灵",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_58_UI.webp",
+    "type": "角色"
+  },
+  "1308": {
+    "name": "丽贝卡",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_69_UI.webp",
+    "type": "角色"
+  },
+  "1309": {
+    "name": "漂泊者·导电",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_4.webp",
+    "type": "角色"
+  },
+  "1310": {
+    "name": "漂泊者·导电",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_5.webp",
+    "type": "角色"
+  },
+  "1402": {
+    "name": "秧秧",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_1.webp",
+    "type": "角色"
+  },
+  "1403": {
+    "name": "秋水",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_12.webp",
+    "type": "角色"
+  },
+  "1404": {
+    "name": "忌炎",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_11.webp",
+    "type": "角色"
+  },
+  "1405": {
+    "name": "鉴心",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_23_UI.webp",
+    "type": "角色"
+  },
+  "1406": {
+    "name": "漂泊者·气动",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_4.webp",
+    "type": "角色"
+  },
+  "1407": {
+    "name": "夏空",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_37_UI.webp",
+    "type": "角色"
+  },
+  "1408": {
+    "name": "漂泊者·气动",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_5.webp",
+    "type": "角色"
+  },
+  "1409": {
+    "name": "卡提希娅",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_40_UI.webp",
+    "type": "角色"
+  },
+  "1410": {
+    "name": "尤诺",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_48_UI.webp",
+    "type": "角色"
+  },
+  "1411": {
+    "name": "仇远",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_56_UI.webp",
+    "type": "角色"
+  },
+  "1412": {
+    "name": "西格莉卡",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_65_UI.webp",
+    "type": "角色"
+  },
+  "1413": {
+    "name": "清宵",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_73_UI.webp",
+    "type": "角色"
+  },
+  "1501": {
+    "name": "漂泊者·衍射",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_4.webp",
+    "type": "角色"
+  },
+  "1502": {
+    "name": "漂泊者·衍射",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_5.webp",
+    "type": "角色"
+  },
+  "1503": {
+    "name": "维里奈",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_3.webp",
+    "type": "角色"
+  },
+  "1504": {
+    "name": "灯灯",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_30_UI.webp",
+    "type": "角色"
+  },
+  "1505": {
+    "name": "守岸人",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_28_UI.webp",
+    "type": "角色"
+  },
+  "1506": {
+    "name": "菲比",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_45_UI.webp",
+    "type": "角色"
+  },
+  "1507": {
+    "name": "赞妮",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_38_UI.webp",
+    "type": "角色"
+  },
+  "1508": {
+    "name": "千咲",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_57_UI.webp",
+    "type": "角色"
+  },
+  "1509": {
+    "name": "琳奈",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_60_UI.webp",
+    "type": "角色"
+  },
+  "1510": {
+    "name": "陆·赫斯",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_54_UI.webp",
+    "type": "角色"
+  },
+  "1511": {
+    "name": "露西",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_68_UI.webp",
+    "type": "角色"
+  },
+  "1601": {
+    "name": "桃祈",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_9.webp",
+    "type": "角色"
+  },
+  "1602": {
+    "name": "丹瑾",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_10.webp",
+    "type": "角色"
+  },
+  "1603": {
+    "name": "椿",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_29_UI.webp",
+    "type": "角色"
+  },
+  "1604": {
+    "name": "漂泊者·湮灭",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_5.webp",
+    "type": "角色"
+  },
+  "1605": {
+    "name": "漂泊者·湮灭",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_4.webp",
+    "type": "角色"
+  },
+  "1606": {
+    "name": "洛可可",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_33_UI.webp",
+    "type": "角色"
+  },
+  "1607": {
+    "name": "坎特蕾拉",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_34_UI.webp",
+    "type": "角色"
+  },
+  "1608": {
+    "name": "弗洛洛",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_41_UI.webp",
+    "type": "角色"
+  },
+  "1610": {
+    "name": "秧秧·玄翎",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead150/T_IconRoleHead150_70_UI.webp",
+    "type": "角色"
+  },
+  "21010011": {
+    "name": "教学长刃",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010011_UI.webp",
+    "type": "武器"
+  },
+  "21010012": {
+    "name": "原初长刃·朴石",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010012_UI.webp",
+    "type": "武器"
+  },
+  "21010013": {
+    "name": "暗夜长刃·玄明",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010013_UI.webp",
+    "type": "武器"
+  },
+  "21010015": {
+    "name": "浩境粼光",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010015_UI.webp",
+    "type": "武器"
+  },
+  "21010016": {
+    "name": "苍鳞千嶂",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010016_UI.webp",
+    "type": "武器"
+  },
+  "21010023": {
+    "name": "源能长刃·测壹",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010023_UI.webp",
+    "type": "武器"
+  },
+  "21010024": {
+    "name": "异响空灵",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010024_UI.webp",
+    "type": "武器"
+  },
+  "21010026": {
+    "name": "时和岁稔",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010026_UI.webp",
+    "type": "武器"
+  },
+  "21010034": {
+    "name": "重破刃-41型",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010034_UI.webp",
+    "type": "武器"
+  },
+  "21010036": {
+    "name": "焰痕",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010036_UI.webp",
+    "type": "武器"
+  },
+  "21010043": {
+    "name": "远行者长刃·辟路",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010043_UI.webp",
+    "type": "武器"
+  },
+  "21010044": {
+    "name": "永夜长明",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010044_UI.webp",
+    "type": "武器"
+  },
+  "21010045": {
+    "name": "源能机锋",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21010045_UI.webp",
+    "type": "武器"
+  },
+  "21010046": {
+    "name": "驭冕铸雷之权",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010046_UI.webp",
+    "type": "武器"
+  },
+  "21010053": {
+    "name": "戍关长刃·定军",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010053_UI.webp",
+    "type": "武器"
+  },
+  "21010056": {
+    "name": "昙切",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010056_UI.webp",
+    "type": "武器"
+  },
+  "21010063": {
+    "name": "钧天正音",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010063_UI.webp",
+    "type": "武器"
+  },
+  "21010064": {
+    "name": "东落",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010064_UI.webp",
+    "type": "武器"
+  },
+  "21010066": {
+    "name": "宙算仪轨",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010066_UI.webp",
+    "type": "武器"
+  },
+  "21010074": {
+    "name": "纹秋",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010074_UI.webp",
+    "type": "武器"
+  },
+  "21010076": {
+    "name": "千般渡",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010076_UI.webp",
+    "type": "武器"
+  },
+  "21010084": {
+    "name": "凋亡频移",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010084_UI.webp",
+    "type": "武器"
+  },
+  "21010094": {
+    "name": "容赦的沉思录",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010094_UI.webp",
+    "type": "武器"
+  },
+  "21010104": {
+    "name": "金穹",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21010104_UI.webp",
+    "type": "武器"
+  },
+  "21020011": {
+    "name": "教学迅刀",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020011_UI.webp",
+    "type": "武器"
+  },
+  "21020012": {
+    "name": "原初迅刀·鸣雨",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020012_UI.webp",
+    "type": "武器"
+  },
+  "21020013": {
+    "name": "暗夜迅刀·黑闪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020013_UI.webp",
+    "type": "武器"
+  },
+  "21020015": {
+    "name": "千古洑流",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020015_UI.webp",
+    "type": "武器"
+  },
+  "21020016": {
+    "name": "赫奕流明",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020016_UI.webp",
+    "type": "武器"
+  },
+  "21020017": {
+    "name": "心之锚",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020019_UI.webp",
+    "type": "武器"
+  },
+  "21020023": {
+    "name": "源能迅刀·测贰",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020023_UI.webp",
+    "type": "武器"
+  },
+  "21020024": {
+    "name": "行进序曲",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020024_UI.webp",
+    "type": "武器"
+  },
+  "21020026": {
+    "name": "裁春",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020017_UI.webp",
+    "type": "武器"
+  },
+  "21020034": {
+    "name": "瞬斩刀-18型",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020034_UI.webp",
+    "type": "武器"
+  },
+  "21020036": {
+    "name": "不灭航路",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020025_UI.webp",
+    "type": "武器"
+  },
+  "21020043": {
+    "name": "远行者迅刀·旅迹",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020043_UI.webp",
+    "type": "武器"
+  },
+  "21020044": {
+    "name": "不归孤军",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020044_UI.webp",
+    "type": "武器"
+  },
+  "21020045": {
+    "name": "镭射切变",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21020045_UI.webp",
+    "type": "武器"
+  },
+  "21020046": {
+    "name": "血誓盟约",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020026_UI.webp",
+    "type": "武器"
+  },
+  "21020053": {
+    "name": "戍关迅刀·镇海",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020053_UI.webp",
+    "type": "武器"
+  },
+  "21020056": {
+    "name": "不屈命定之冠",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020056_UI.webp",
+    "type": "武器"
+  },
+  "21020064": {
+    "name": "西升",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020064_UI.webp",
+    "type": "武器"
+  },
+  "21020066": {
+    "name": "裁竹",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020066_UI.webp",
+    "type": "武器"
+  },
+  "21020074": {
+    "name": "飞景",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020074_UI.webp",
+    "type": "武器"
+  },
+  "21020076": {
+    "name": "永远的启明星",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020076_UI.webp",
+    "type": "武器"
+  },
+  "21020084": {
+    "name": "永续坍缩",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020084_UI.webp",
+    "type": "武器"
+  },
+  "21020086": {
+    "name": "灼霜",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020086_UI.webp",
+    "type": "武器"
+  },
+  "21020094": {
+    "name": "风流的寓言诗",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020094_UI.webp",
+    "type": "武器"
+  },
+  "21020096": {
+    "name": "天之苍苍",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020096_UI.webp",
+    "type": "武器"
+  },
+  "21020104": {
+    "name": "翼锋",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020104_UI.webp",
+    "type": "武器"
+  },
+  "21020106": {
+    "name": "云琅",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21020106_UI.webp",
+    "type": "武器"
+  },
+  "21030011": {
+    "name": "教学佩枪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030011_UI.webp",
+    "type": "武器"
+  },
+  "21030012": {
+    "name": "原初佩枪·穿林",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030012_UI.webp",
+    "type": "武器"
+  },
+  "21030013": {
+    "name": "暗夜佩枪·暗星",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030013_UI.webp",
+    "type": "武器"
+  },
+  "21030015": {
+    "name": "停驻之烟",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030015_UI.webp",
+    "type": "武器"
+  },
+  "21030016": {
+    "name": "死与舞",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030017_UI.webp",
+    "type": "武器"
+  },
+  "21030023": {
+    "name": "源能佩枪·测叁",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030023_UI.webp",
+    "type": "武器"
+  },
+  "21030024": {
+    "name": "华彩乐段",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030024_UI.webp",
+    "type": "武器"
+  },
+  "21030026": {
+    "name": "林间的咏叹调",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030026_UI.webp",
+    "type": "武器"
+  },
+  "21030034": {
+    "name": "穿击枪-26型",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030034_UI.webp",
+    "type": "武器"
+  },
+  "21030036": {
+    "name": "光影双生",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030036_UI.webp",
+    "type": "武器"
+  },
+  "21030043": {
+    "name": "远行者佩枪·洞察",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030043_UI.webp",
+    "type": "武器"
+  },
+  "21030044": {
+    "name": "无眠烈火",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030044_UI.webp",
+    "type": "武器"
+  },
+  "21030045": {
+    "name": "相位涟漪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21030045_UI.webp",
+    "type": "武器"
+  },
+  "21030046": {
+    "name": "溢彩荧辉",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030046_UI.webp",
+    "type": "武器"
+  },
+  "21030053": {
+    "name": "戍关佩枪·平云",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030053_UI.webp",
+    "type": "武器"
+  },
+  "21030056": {
+    "name": "蜃影",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030056_UI.webp",
+    "type": "武器"
+  },
+  "21030064": {
+    "name": "飞逝",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030064_UI.webp",
+    "type": "武器"
+  },
+  "21030066": {
+    "name": "碎骨",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030066_UI.webp",
+    "type": "武器"
+  },
+  "21030074": {
+    "name": "奔雷",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030074_UI.webp",
+    "type": "武器"
+  },
+  "21030084": {
+    "name": "悖论喷流",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030084_UI.webp",
+    "type": "武器"
+  },
+  "21030094": {
+    "name": "叙别的罗曼史",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030094_UI.webp",
+    "type": "武器"
+  },
+  "21030104": {
+    "name": "阳焰",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21030104_UI.webp",
+    "type": "武器"
+  },
+  "21040011": {
+    "name": "教学臂铠",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040011_UI.webp",
+    "type": "武器"
+  },
+  "21040012": {
+    "name": "原初臂铠·磐岩",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040012_UI.webp",
+    "type": "武器"
+  },
+  "21040013": {
+    "name": "暗夜臂铠·夜芒",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040013_UI.webp",
+    "type": "武器"
+  },
+  "21040015": {
+    "name": "擎渊怒涛",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040015_UI.webp",
+    "type": "武器"
+  },
+  "21040016": {
+    "name": "诸方玄枢",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040016_UI.webp",
+    "type": "武器"
+  },
+  "21040023": {
+    "name": "源能臂铠·测肆",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040023_UI.webp",
+    "type": "武器"
+  },
+  "21040024": {
+    "name": "呼啸重音",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040024_UI.webp",
+    "type": "武器"
+  },
+  "21040026": {
+    "name": "悲喜剧",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040018_UI.webp",
+    "type": "武器"
+  },
+  "21040034": {
+    "name": "钢影拳-21丁型",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040034_UI.webp",
+    "type": "武器"
+  },
+  "21040036": {
+    "name": "焰光裁定",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040019_UI.webp",
+    "type": "武器"
+  },
+  "21040043": {
+    "name": "远行者臂铠·破障",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040043_UI.webp",
+    "type": "武器"
+  },
+  "21040044": {
+    "name": "袍泽之固",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040044_UI.webp",
+    "type": "武器"
+  },
+  "21040045": {
+    "name": "脉冲协臂",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21040045_UI.webp",
+    "type": "武器"
+  },
+  "21040046": {
+    "name": "万物持存的注释",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040046_UI.webp",
+    "type": "武器"
+  },
+  "21040053": {
+    "name": "戍关臂铠·拔山",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040053_UI.webp",
+    "type": "武器"
+  },
+  "21040056": {
+    "name": "白昼之脊",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21040056_UI.webp",
+    "type": "武器"
+  },
+  "21040064": {
+    "name": "骇行",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040064_UI.webp",
+    "type": "武器"
+  },
+  "21040066": {
+    "name": "昭日译注",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040066_UI.webp",
+    "type": "武器"
+  },
+  "21040074": {
+    "name": "金掌",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040074_UI.webp",
+    "type": "武器"
+  },
+  "21040084": {
+    "name": "尘云旋臂",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040084_UI.webp",
+    "type": "武器"
+  },
+  "21040094": {
+    "name": "酩酊的英雄志",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040094_UI.webp",
+    "type": "武器"
+  },
+  "21040104": {
+    "name": "凌空",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21040104_UI.webp",
+    "type": "武器"
+  },
+  "21050011": {
+    "name": "教学音感仪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050011_UI.webp",
+    "type": "武器"
+  },
+  "21050012": {
+    "name": "原初音感仪·听浪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050012_UI.webp",
+    "type": "武器"
+  },
+  "21050013": {
+    "name": "暗夜矩阵·暝光",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050013_UI.webp",
+    "type": "武器"
+  },
+  "21050015": {
+    "name": "漪澜浮录",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050015_UI.webp",
+    "type": "武器"
+  },
+  "21050016": {
+    "name": "掣傀之手",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050016_UI.webp",
+    "type": "武器"
+  },
+  "21050017": {
+    "name": "渊海回声",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050017_UI.webp",
+    "type": "武器"
+  },
+  "21050023": {
+    "name": "源能音感仪·测五",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050023_UI.webp",
+    "type": "武器"
+  },
+  "21050024": {
+    "name": "奇幻变奏",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050024_UI.webp",
+    "type": "武器"
+  },
+  "21050026": {
+    "name": "琼枝冰绡",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050026_UI.webp",
+    "type": "武器"
+  },
+  "21050027": {
+    "name": "大海的馈赠",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050036_UI.webp",
+    "type": "武器"
+  },
+  "21050034": {
+    "name": "鸣动仪-25型",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050034_UI.webp",
+    "type": "武器"
+  },
+  "21050036": {
+    "name": "星序协响",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050027_UI.webp",
+    "type": "武器"
+  },
+  "21050043": {
+    "name": "远行者矩阵·探幽",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050043_UI.webp",
+    "type": "武器"
+  },
+  "21050044": {
+    "name": "今州守望",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050044_UI.webp",
+    "type": "武器"
+  },
+  "21050045": {
+    "name": "玻色星仪",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon_21050045_UI.webp",
+    "type": "武器"
+  },
+  "21050046": {
+    "name": "和光回唱",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050029_UI.webp",
+    "type": "武器"
+  },
+  "21050053": {
+    "name": "戍关音感仪·留光",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050053_UI.webp",
+    "type": "武器"
+  },
+  "21050056": {
+    "name": "海的呢喃",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050030_UI.webp",
+    "type": "武器"
+  },
+  "21050064": {
+    "name": "异度",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050064_UI.webp",
+    "type": "武器"
+  },
+  "21050066": {
+    "name": "幽冥的忘忧章",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050066_UI.webp",
+    "type": "武器"
+  },
+  "21050074": {
+    "name": "清音",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050074_UI.webp",
+    "type": "武器"
+  },
+  "21050076": {
+    "name": "赝作的矮星",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050076_UI.webp",
+    "type": "武器"
+  },
+  "21050084": {
+    "name": "核熔星盘",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050084_UI.webp",
+    "type": "武器"
+  },
+  "21050086": {
+    "name": "存帧",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050086_UI.webp",
+    "type": "武器"
+  },
+  "21050094": {
+    "name": "虚饰的华尔兹",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050094_UI.webp",
+    "type": "武器"
+  },
+  "21050096": {
+    "name": "栖霞饮露",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050096_UI.webp",
+    "type": "武器"
+  },
+  "21050104": {
+    "name": "曜光",
+    "url": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconWeapon/T_IconWeapon21050104_UI.webp",
+    "type": "武器"
+  }
+}
