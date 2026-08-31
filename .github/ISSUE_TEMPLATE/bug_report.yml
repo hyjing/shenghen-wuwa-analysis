@@ -1,0 +1,40 @@
+name: 问题反馈
+description: 报告声痕网页或提取器的问题
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请勿上传真实 UID、游戏日志、完整抽卡 JSON、临时唤取链接、Cookie 或 Token。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题位置
+      options:
+        - Windows 提取器
+        - 网页导入
+        - 统计结果
+        - 图标或界面
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请说明预期结果和实际结果，并对截图中的 UID 做遮挡。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      placeholder: 例如 Windows 11 / PowerShell 5.1 / Edge 版本号
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 隐私确认
+      options:
+        - label: 我已删除或遮挡 UID、临时链接、日志、Cookie、Token 和未脱敏 JSON。
+          required: true

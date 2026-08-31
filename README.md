@@ -1,12 +1,23 @@
-# 声痕 · 鸣潮唤取分析
+# 声痕｜鸣潮抽卡分析、唤取记录导出工具
 
-隐私优先的《鸣潮》唤取记录提取与分析网页。Windows 提取器从本地游戏日志取得临时记录链接，只请求库洛官方接口并生成 JSON；网页在浏览器本地完成分析，不上传抽卡记录。
+[![在线使用](https://img.shields.io/badge/在线使用-打开声痕-27b8ae)](https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Privacy: Local First](https://img.shields.io/badge/Privacy-Local%20First-172731)
+![Wuthering Waves](https://img.shields.io/badge/Wuthering%20Waves-Convene%20Tracker-d7aa55)
+
+**声痕**是一个免费、开源、隐私优先的《鸣潮》抽卡分析与唤取记录导出工具。它支持 Windows 国服、Steam、Epic 等常见安装方式，可查看当前垫抽、五星收藏、小保底不歪率、UP 角色/武器平均抽数和出金分布。
+
+Windows 提取器从本地游戏日志取得临时记录链接，只请求库洛官方接口并生成 JSON；分析网页完全在浏览器本地运行，不上传抽卡记录。
 
 > 非库洛游戏官方产品。本项目不会要求游戏账号、密码、验证码、Cookie 或库街区 Token。
 
 ## 在线使用
 
-https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site
+### [立即打开声痕网页版 →](https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site)
+
+无需注册或登录游戏账号。第一次使用请按下面的 Windows 流程生成 JSON。
+
+![声痕鸣潮抽卡分析](public/og.png)
 
 ## 完整使用流程（Windows）
 
@@ -49,6 +60,14 @@ Set-ExecutionPolicy -Scope Process Bypass
 - 自动识别官服、Steam、Epic 等常见安装位置
 - 兼容普通日志及新版 XOR 混淆的 `Client.log`
 - 查询 1–13 号卡池类型并合并旧文件
+
+## 为什么选择声痕
+
+- **本地优先**：玩家记录不经过声痕服务器。
+- **源码可审计**：PowerShell 提取脚本和网页代码全部公开。
+- **不要求登录**：无需提供游戏密码、短信验证码、Cookie 或库街区 Token。
+- **统计口径透明**：每项核心指标的计算方式都写在本文档中。
+- **可持续备份**：重复运行会合并已有 JSON，方便长期保存自己的唤取历史。
 
 ## 隐私与安全
 
@@ -115,6 +134,12 @@ public/README.txt            提取器简明说明
 - 不要提交 `.env`、Cookie、Token、抓包文件、游戏日志或玩家 JSON。
 - `.gitignore` 已排除环境变量、构建产物和本地部署缓存。
 - 图标来自公开的 [Wuthering Waves Assets](https://github.com/ryanbenson/wuthering-waves-assets)，版权归原权利方所有。
+
+发现安全或隐私问题时，请阅读 [SECURITY.md](SECURITY.md)，不要在公开 Issue 中粘贴真实 UID、游戏日志或抽卡 JSON。
+
+## 搜索关键词
+
+鸣潮抽卡分析、鸣潮抽卡记录、鸣潮唤取记录、鸣潮抽卡导出、鸣潮保底统计、鸣潮抽卡工具、Wuthering Waves gacha tracker、Wuthering Waves convene history、Wuthering Waves gacha export。
 
 ## 参考项目
 
