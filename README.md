@@ -1,6 +1,5 @@
 # 声痕｜鸣潮抽卡分析、唤取记录导出工具
 
-[![在线使用](https://img.shields.io/badge/在线使用-打开声痕-27b8ae)](https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Privacy: Local First](https://img.shields.io/badge/Privacy-Local%20First-172731)
 ![Wuthering Waves](https://img.shields.io/badge/Wuthering%20Waves-Convene%20Tracker-d7aa55)
@@ -9,25 +8,52 @@
 
 Windows 提取器从本地游戏日志取得临时记录链接，只请求库洛官方接口并生成 JSON；分析网页完全在浏览器本地运行，不上传抽卡记录。
 
-> 非库洛游戏官方产品。本项目不会要求游戏账号、密码、验证码、Cookie 或库街区 Token。
+> 非库洛游戏官方产品。本项目不会要求游戏账号、密码、验证码、Cookie 或库街区 Token。项目不提供统一的公共分析站点，请在自己的电脑上运行，或自行部署经过审阅的代码。
 
-## 在线使用
+## 在本机打开
 
-### [立即打开声痕网页版 →](https://shenghen-wuwa-analysis.frankyknarf.chatgpt.site)
+要求安装 [Node.js 22.13 或更高版本](https://nodejs.org/) 和 npm。
 
-无需注册或登录游戏账号。第一次使用请按下面的 Windows 流程生成 JSON。
+### 方法一：下载源码 ZIP（适合普通用户）
+
+1. 打开本仓库的 [GitHub 页面](https://github.com/hyjing/shenghen-wuwa-analysis)。
+2. 点击 **Code → Download ZIP**，下载后完整解压。
+3. 在解压后的项目目录空白处按住 Shift 并点击鼠标右键，选择“在终端中打开”。
+4. 依次执行：
+
+```powershell
+npm install
+npm run dev
+```
+
+5. 终端显示启动成功后，用浏览器打开：
+
+### [http://localhost:3000](http://localhost:3000)
+
+使用期间不要关闭运行 `npm run dev` 的终端。需要停止时回到终端按 `Ctrl+C`。
+
+### 方法二：使用 Git
+
+```bash
+git clone https://github.com/hyjing/shenghen-wuwa-analysis.git
+cd shenghen-wuwa-analysis
+npm install
+npm run dev
+```
+
+然后打开 [http://localhost:3000](http://localhost:3000)。`localhost` 只指向当前电脑，不会把网页公开到互联网。
 
 ![声痕鸣潮抽卡分析](public/og.png)
 
 ## 完整使用流程（Windows）
 
-1. 用 Edge、Chrome 或 Firefox 打开上面的在线页面。
-2. 点击“下载声痕提取器”，得到 `shenghen-extractor.zip`。
+1. 按“在本机打开”一节启动项目，并访问 [http://localhost:3000](http://localhost:3000)。
+2. 点击页面里的“下载声痕提取器”，得到 `shenghen-extractor.zip`；也可以直接使用源码中的 [`public/shenghen-extractor.zip`](public/shenghen-extractor.zip)。
 3. 解压 ZIP，不要直接在压缩包预览窗口运行脚本。
 4. 启动《鸣潮》，进入“唤取”，打开一次“唤取记录”并等待记录出现。
 5. 回到解压目录，右键 `shenghen-extractor.ps1`，选择“使用 PowerShell 运行”。
 6. 完成后，同一目录会出现 `shenghen-pulls-你的UID.json`。
-7. 回到网页，把 JSON 拖进导入框。
+7. 回到本机网页 `http://localhost:3000`，把 JSON 拖进导入框。
 8. 查看垫抽、五星收藏、小保底不歪率、UP 角色/武器平均抽数和出金分布。
 9. 以后抽卡后继续运行同一目录里的脚本，它会合并同名旧 JSON。
 
@@ -106,7 +132,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 仓库不包含玩家 JSON、真实 UID、临时唤取链接或鉴权参数。提交 Issue 前也请删除这些信息。
 
-## 本地开发
+## 本地开发与自行部署
 
 要求 Node.js 22.13 或更高版本。
 
@@ -117,7 +143,13 @@ npm install
 npm run dev
 ```
 
-生产构建运行 `npm run build`。开发地址通常是 `http://localhost:3000`，其他电脑应使用正式部署地址。
+生产构建运行：
+
+```bash
+npm run build
+```
+
+项目所有分析功能均可在 `http://localhost:3000` 使用，不需要作者提供服务器。需要长期公开访问时，请先审阅源码，再使用你自己的静态或 Node.js 托管服务部署，并自行负责访问控制、依赖更新、流量费用和安全配置。不要在前端代码或公开仓库中加入 API Key、Cookie、Token、玩家 JSON 或临时唤取链接。
 
 ## 项目结构
 
